@@ -25,12 +25,16 @@ namespace Day12
                 {
                     //Add the node to the unvisited list with a g-score of infinity, an f-score of infinity and previous node of null
                     Unvisited.Add(new Node(graph[i,j], i, j, int.MaxValue, int.MaxValue, null));
+
                 }
             }
+
+            //Set the start node's g-score to 0 in the unvisited list
+            //Set the start node's f-score to its h-score in the unvisited list
+
             /*
-        
-    Set the start node's g-score to 0 in the unvisited list
-    Set the start node's f-score to its h-score in the unvisited list
+        https://isaaccomputerscience.org/concepts/dsa_search_a_star?examBoard=all&stage=all
+    
     
     While the unvisited list is not empty:
         Set current node to the node in the unvisited list with the lowest f-score
@@ -55,15 +59,19 @@ namespace Day12
     class Node
     {
         Char value;
+        Node prevNode;
         int gscore;
         int fscore;
         int x;
         int y;
-        public Node(char value, int x, int y, int gscore, int fscore, )
+        public Node(char value, int x, int y, int gscore, int fscore, Node prevNode)
         {
             this.value = value;
             this.x = x;
             this.y = y;
+            this.gscore = gscore;
+            this.fscore = fscore;
+            this.prevNode = prevNode;
         }
     }
 
